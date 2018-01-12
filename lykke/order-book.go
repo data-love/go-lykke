@@ -37,3 +37,21 @@ func (s *Client) GetOrderBooks() (*OrderBooks, error) {
 	}
 	return &data, nil
 }
+
+func (s *Client) GetOrderBooksByAssetPair(assetPairID string) (*OrderBooks, error) {
+	url := fmt.Sprintf(baseURL+"/OrderBooks/%s", assetPairID)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	bytes, err := s.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+	var data OrderBooks
+	err = json.Unmarshal(bytes, &data)
+	if err != nil {
+		return nil, err
+	}
+	return &data, nil
+}

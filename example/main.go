@@ -20,4 +20,23 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(books)
+
+	pairs, err := client.GetAssetPairs()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(pairs)
+
+	pair, err := client.GetAssetPair("AUDUSD")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(pair)
+
+	pairBooks, err := client.GetOrderBooksByAssetPair("AUDUSD")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(pairBooks)
+
 }
