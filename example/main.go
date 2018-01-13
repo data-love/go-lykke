@@ -39,4 +39,16 @@ func main() {
 	}
 	fmt.Println(pairBooks)
 
+	orders, err := client.GetOrders()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(orders)
+
+	order, err := client.GetOrders("someID")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(order)
+
 }
