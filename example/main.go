@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	client := lykke.NewApiClient("apikey")
+	client := lykke.NewApiClient("some id")
 
 	resp, err := client.GetIsAlive()
 	if err != nil {
@@ -45,10 +45,39 @@ func main() {
 	}
 	fmt.Println(orders)
 
-	order, err := client.GetOrders("someID")
+	order, err := client.GetOrder("someID")
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(order)
 
+	marketOrder := lykke.MarketOrder{
+		AssetPairID: "BTCEUR",
+		Asset:       "BTC",
+		OrderAction: "sell",
+		Volume:      1,
+	}
+
+	err = client.AddMarketOrder(marketOrder)
+	if err != nil {
+		panic(err)
+	}
+
+	limitOrder := lykke.LimitOrder{
+		AssetPairID: "BTCEUR",
+		OrderAction: "buy",
+		Volume:      1,
+		Price:       1.394543,
+	}
+
+	err = client.AddLimitOrder(limitOrder)
+	if err != nil {
+		panic(err)
+	}
+
+	wallets, err := client.GetWallets()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(wallets)
 }

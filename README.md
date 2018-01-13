@@ -92,26 +92,31 @@ fmt.Println(order)
 - AddLimitOrder
 
 ```
-limitOrder := {
-
+limitOrder := lykke.LimitOrder{
+  AssetPairID: "BTCEUR",
+  OrderAction: "buy",
+  Volume:      1,
+  Price:       1.394543,
 }
 
-err := client.SetLimitOrder(limitOrder)
+err = client.AddLimitOrder(limitOrder)
 if err != nil {
   panic(err)
 }
-
 
 ```
 
 - AddMarketOrder
 
 ```
-marketOrder := {
-
+marketOrder := lykke.MarketOrder{
+  AssetPairID: "BTCEUR",
+  Asset:       "BTC",
+  OrderAction: "sell",
+  Volume:      1,
 }
 
-err := client.SetMarketOrder(marketOrder)
+err = client.AddMarketOrder(marketOrder)
 if err != nil {
   panic(err)
 }
@@ -128,4 +133,14 @@ if err != nil {
 }
 
 
+```
+
+- GetWallets
+
+```
+wallets, err := client.GetWallets()
+if err != nil {
+  panic(err)
+}
+fmt.Println(wallets)
 ```

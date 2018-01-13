@@ -74,7 +74,7 @@ func (c *Client) GetOrder(id string) (*Order, error) {
 	return &data, nil
 }
 
-func (c *Client) AddMarketOrder(order *MarketOrder) error {
+func (c *Client) AddMarketOrder(order MarketOrder) error {
 	url := fmt.Sprintf(baseURL + "/Orders/market")
 	j, err := json.Marshal(order)
 	if err != nil {
@@ -89,7 +89,7 @@ func (c *Client) AddMarketOrder(order *MarketOrder) error {
 	return err
 }
 
-func (c *Client) AddLimitOrder(order *LimitOrder) error {
+func (c *Client) AddLimitOrder(order LimitOrder) error {
 	url := fmt.Sprintf(baseURL + "/Orders/limit")
 	j, err := json.Marshal(order)
 	if err != nil {
