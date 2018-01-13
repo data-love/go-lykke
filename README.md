@@ -11,6 +11,12 @@ go get github.com/data-love/go-lykke-trading/lykke
 
 ```
 
+# Todos
+
+- Api Mock
+- write Tests
+- Better Examples
+
 # Usage
 
 In general most of the calls are public and do not need the API key. POST Actions of Orders do have a API key required.
