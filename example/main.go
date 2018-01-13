@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/data-love/go-lykke/lykke"
+	"github.com/data-love/go-lykke-trading/lykke"
 )
 
 func main() {

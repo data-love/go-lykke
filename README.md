@@ -1,1 +1,1 @@
-# go-lykke
+# go-lykke-trading
