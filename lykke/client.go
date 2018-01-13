@@ -33,13 +33,13 @@ type IssueIndicator struct {
 }
 
 // GetIsAlive to check if Api is Alive
-func (s *Client) GetIsAlive() (*IsAlive, error) {
+func (c *Client) GetIsAlive() (*IsAlive, error) {
 	url := fmt.Sprintf(baseURL + "/isAlive")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (s *Client) GetIsAlive() (*IsAlive, error) {
 	return &data, nil
 }
 
-func (s *Client) doRequest(req *http.Request) ([]byte, error) {
+func (c *Client) doRequest(req *http.Request) ([]byte, error) {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {

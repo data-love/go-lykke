@@ -17,13 +17,13 @@ type AssetPair struct {
 	QuotingAssetID   string  `json:"QuotingAssetId"`
 }
 
-func (s *Client) GetAssetPairs() (*AssetPairs, error) {
+func (c *Client) GetAssetPairs() (*AssetPairs, error) {
 	url := fmt.Sprintf(baseURL + "/AssetPairs")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -35,13 +35,13 @@ func (s *Client) GetAssetPairs() (*AssetPairs, error) {
 	return &data, nil
 }
 
-func (s *Client) GetAssetPair(id string) (*AssetPair, error) {
+func (c *Client) GetAssetPair(id string) (*AssetPair, error) {
 	url := fmt.Sprintf(baseURL+"/AssetPairs/%s", id)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}

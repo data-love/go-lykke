@@ -20,13 +20,13 @@ type Price struct {
 	Price  float32 `json:"Price"`
 }
 
-func (s *Client) GetOrderBooks() (*OrderBooks, error) {
+func (c *Client) GetOrderBooks() (*OrderBooks, error) {
 	url := fmt.Sprintf(baseURL + "/OrderBooks")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
@@ -38,13 +38,13 @@ func (s *Client) GetOrderBooks() (*OrderBooks, error) {
 	return &data, nil
 }
 
-func (s *Client) GetOrderBooksByAssetPair(assetPairID string) (*OrderBooks, error) {
+func (c *Client) GetOrderBooksByAssetPair(assetPairID string) (*OrderBooks, error) {
 	url := fmt.Sprintf(baseURL+"/OrderBooks/%s", assetPairID)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}

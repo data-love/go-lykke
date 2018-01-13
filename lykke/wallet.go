@@ -14,13 +14,13 @@ type Wallet struct {
 	Reserved float32 `json:"Reserved"`
 }
 
-func (s *Client) GetWallets() (*Wallets, error) {
+func (c *Client) GetWallets() (*Wallets, error) {
 	url := fmt.Sprintf(baseURL + "/Wallets")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
 	}
-	bytes, err := s.doRequest(req)
+	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
 	}
