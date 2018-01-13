@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	client := lykke.NewApiClient("some id")
+	client := lykke.New("some id")
 
-	resp, err := client.GetIsAlive()
+	resp, err := client.Ping()
 	if err != nil {
 		panic(err)
 	}
@@ -54,7 +54,7 @@ func main() {
 	marketOrder := lykke.MarketOrder{
 		AssetPairID: "BTCEUR",
 		Asset:       "BTC",
-		OrderAction: "sell",
+		OrderAction: "Sell",
 		Volume:      1,
 	}
 
@@ -65,7 +65,7 @@ func main() {
 
 	limitOrder := lykke.LimitOrder{
 		AssetPairID: "BTCEUR",
-		OrderAction: "buy",
+		OrderAction: "Buy",
 		Volume:      1,
 		Price:       1.394543,
 	}

@@ -20,6 +20,7 @@ func (c *Client) GetWallets() (*Wallets, error) {
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("api-key", c.APIKey)
 	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err

@@ -4,7 +4,14 @@ This is a lightweight API Wrapper for the Lykke Trading API written in __GO__.
 
 [Swagger API Description](https://hft-api.lykke.com/swagger/ui/#/)
 
-# Action Examples
+# Install
+
+```
+go get github.com/data-love/go-lykke-trading/lykke
+
+```
+
+# Usage
 
 In general most of the calls are public and do not need the API key. POST Actions of Orders do have a API key required.
 
@@ -20,14 +27,14 @@ import (
 )
 
 func main() {
-	client := lykke.NewApiClient("apikey")
+	client := lykke.New("apikey")
 }
 ```
 
 - Check API Status
 
 ```
-resp, err := client.GetIsAlive()
+resp, err := client.Ping()
 if err != nil {
   panic(err)
 }

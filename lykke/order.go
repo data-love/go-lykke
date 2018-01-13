@@ -58,10 +58,10 @@ func (c *Client) GetOrders() (*Orders, error) {
 func (c *Client) GetOrder(id string) (*Order, error) {
 	url := fmt.Sprintf(baseURL+"/Orders/%s", id)
 	req, err := http.NewRequest("GET", url, nil)
-	req.Header.Set("api-key", c.APIKey)
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("api-key", c.APIKey)
 	bytes, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
@@ -81,10 +81,11 @@ func (c *Client) AddMarketOrder(order MarketOrder) error {
 		return err
 	}
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
-	req.Header.Set("api-key", c.APIKey)
 	if err != nil {
 		return err
 	}
+	req.Header.Set("api-key", c.APIKey)
+	req.Header.Set("Content-Type", "application/json-patch+json")
 	_, err = c.doRequest(req)
 	return err
 }
@@ -96,10 +97,11 @@ func (c *Client) AddLimitOrder(order LimitOrder) error {
 		return err
 	}
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
-	req.Header.Set("api-key", c.APIKey)
 	if err != nil {
 		return err
 	}
+	req.Header.Set("api-key", c.APIKey)
+	req.Header.Set("Content-Type", "application/json-patch+json")
 	_, err = c.doRequest(req)
 	return err
 }
@@ -107,10 +109,10 @@ func (c *Client) AddLimitOrder(order LimitOrder) error {
 func (c *Client) CancelOrder(id string) error {
 	url := fmt.Sprintf(baseURL+"/Orders/%s/Cancel", id)
 	req, err := http.NewRequest("POST", url, nil)
-	req.Header.Set("api-key", c.APIKey)
 	if err != nil {
 		return err
 	}
+	req.Header.Set("api-key", c.APIKey)
 	_, err = c.doRequest(req)
 	return err
 }

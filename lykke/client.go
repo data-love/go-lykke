@@ -14,7 +14,7 @@ type Client struct {
 	APIKey string
 }
 
-func NewApiClient(apiKey string) *Client {
+func New(apiKey string) *Client {
 	return &Client{
 		APIKey: apiKey,
 	}
@@ -33,7 +33,7 @@ type IssueIndicator struct {
 }
 
 // GetIsAlive to check if Api is Alive
-func (c *Client) GetIsAlive() (*IsAlive, error) {
+func (c *Client) Ping() (*IsAlive, error) {
 	url := fmt.Sprintf(baseURL + "/isAlive")
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
